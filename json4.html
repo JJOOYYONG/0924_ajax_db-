@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<button type ="button">버튼</button>
+	<ul></ul>
+	<script src="../script/jquery-3.4.1.min.js"></script>
+	<script>
+	
+		$('button').click(function(){
+			
+			$.ajax({
+				url : 'json4.jsp',
+				success:function(data){
+					$.each(data,function(index,item){
+						$('ul').append('<li>'+item.id+':'+item.name+'</li>');
+						
+					});
+				}
+			});
+		});
+	
+	</script>
+
+</body>
+</html>

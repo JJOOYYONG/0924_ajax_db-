@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<button type="button">버튼</button>
+	<div></div>
+
+
+
+	<script src="../script/jquery-3.4.1.min.js"></script>
+	<script>
+	$('button').click(function(){
+		
+		//$('div').html('');
+		
+		
+		$.ajax({
+			url :'xml.jsp',
+			success : function(data){
+				
+				console.log(typeof data);
+				console.log(data);
+				
+		var str ='';
+				
+		$(data).find('person').each(function(index,item){
+			  var name = $(item).find('name').text();
+			  var gender = $(item).find('gender').text();
+			  var part = $(item).find('part').text();
+			//var name = $(this).find('name').find('name').text();
+			
+			//str 변수 없이 1줄 사용
+			//$('div').append('<h1>'+name+' : ' +gender+ ' : '+part+'</h1>');
+			
+			//str 변수 사용하여 바로 바로 할 수 있음
+			str +='<h1>'+name+' : ' +gender+ ' : '+part+'</h1>';
+		
+		});		
+		
+			$('div').append(str);
+			}
+		});
+	});
+	
+	
+	</script>
+
+</body>
+</html>

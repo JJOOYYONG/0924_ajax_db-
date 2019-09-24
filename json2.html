@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<button type="button">버튼</button>
+	<table border ="1">
+		<tr>
+		<th>name</th><th>gender</th><th>part</th>
+		</tr>
+	</table>
+
+
+
+	<script src="../script/jquery-3.4.1.min.js"></script>
+	
+	
+	<script>
+	
+	$('button').click(function(){
+		$.ajax({
+			url:'json2.jsp',
+			success:function(data){
+				console.log(typeof data);
+				console.log(data);
+				
+				$.each(data,function(index,item){
+					
+					var str = '<tr><td>'+item.name+'</td><td>'+item.gender+'</td><td>'+item.part+'</td></tr>';
+					$('table').append(str);
+					
+				});
+				
+			}
+			
+		});
+	});
+	
+	
+	</script>
+
+
+
+
+
+</body>
+</html>
